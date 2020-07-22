@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Learning Never End</title>
+    <link>https://goldcrestwilma.github.io/tags/go/</link>
+    <description>Recent content in go on Learning Never End</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
+    <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
+    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://goldcrestwilma.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go 언어의 장점</title>
+      <link>https://goldcrestwilma.github.io/posts/golang/1/</link>
+      <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/posts/golang/1/</guid>
+      <description>소개 공식 홈페이지Go 또는 Golang은 오픈 소스 프로그래밍 언어입니다. 정적으로 유형이 지정되고 컴파일 된 기계 코드 바이너리를 생성합니다. 새로운 프로그래밍 언어에는 메모리를 안전하게 사용하고, 객체를 관리하고, 가비지를 수집하고, 동시성과 함께 정적 (또는 엄격한) 타이핑을 제공 할 수있는 도구가 포함되어 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

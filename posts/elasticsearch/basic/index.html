@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is the Elasticsearch?  | Learning Never End</title>
+  <meta name="description" content="cosmos 'What is the Elasticsearch?'read this article.">
+  <meta property="og:title" content="What is the Elasticsearch?">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-04-23">
+  
+  <meta property="og:description" content="cosmos 'What is the Elasticsearch?'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/elasticsearch/basic/">
+  <meta property="og:site_name" content="Learning Never End">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="elasticsearch">
+  
+  <meta property="og:tags" content="shard">
+  
+  <meta property="og:tags" content="node">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/elasticsearch/basic/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#cosmos</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/elasticsearch/basic/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>23 Apr 2020, 22:31</time>
+        <h1>What is the Elasticsearch?</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#클러스터cluster">클러스터(Cluster)</a></li>
+    <li><a href="#노드node">노드(Node)</a>
+      <ul>
+        <li><a href="#master-eligible-node">Master-eligible Node</a></li>
+        <li><a href="#data-node">Data Node</a></li>
+        <li><a href="#coordinating-only-node">Coordinating Only Node</a></li>
+        <li><a href="#ingest-node">Ingest Node</a></li>
+      </ul>
+    </li>
+    <li><a href="#인덱스index-indices">인덱스(Index, Indices)</a></li>
+    <li><a href="#샤드shard">샤드(Shard)</a></li>
+    <li><a href="#세그먼트segment">세그먼트(Segment)</a></li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <p><img src="https://user-images.githubusercontent.com/61505386/80106988-88dd4a00-85b5-11ea-8a31-9a8164d25b6d.png" alt="ElasticSearch-logo"></p>
+<h1 id="what-is-the-elasticsearch">What is the Elasticsearch?</h1>
+<p>Elasticsearch 는 아파치 루씬(Apache Lucene) 기반의 <code>분산형 오픈소스 검색 및 분석엔진</code>이다. 텍스트를 직접 검색하는 대신 인덱스를 검색하기 때문에 빠르게 검색 결과를 응답받을 수 있습니다. 또한 테이블 또는 스키마 대신 문서(document)를 기반으로하는 전체 텍스트 검색을 지원합니다. 2010년 출시된 이후 가장 널리 사용되고 있는 검색엔진이 되었고 로그 분석, 전체 텍스트 검색, 보안 인텔리전스, 비즈니스 분석 및 운영 인텔리전스 사용 사례에 주로 사용됩니다.</p>
+<h1 id="why-elasticsearch">Why Elasticsearch?</h1>
+<p>구조화, 비구조화, 지리적 데이터, 메트릭스 등 데이터 유형에 관계없이 다양한 종류의 검색을 수행하고 결합할 수 있다.</p>
+<ol>
+<li>필요한 모든 형태로 데이터를 검색할 수 있다.</li>
+<li>대용량의 데이터를 짧은 시간내에 입력(색인)하고 아주 빠른 속도로 색인된 데이터의 검색, 집계가 가능합니다.</li>
+</ol>
+<h1 id="the-basic-concepts-of-elasticsearch">The Basic Concepts of Elasticsearch</h1>
+<p><code>Elasticsearch</code>의 기본 개념인 클러스터, 인덱스, 노드, 샤드, 세그먼트 등을 살펴 보겠습니다.</p>
+<h2 id="클러스터cluster">클러스터(Cluster)</h2>
+<p>클러스터는 전체 데이터를 저장하고 모든 서버에 걸쳐 통합 인덱싱 및 검색 기능을 제공하는 하나 이상의 서버 모음입니다. 관계형 데이터베이스의 경우 노드는 DB 인스턴스다. 클러스터 이름이 같은 N개의 노드가 있을 수 있습니다.</p>
+<h2 id="노드node">노드(Node)</h2>
+<p>노드는 클러스터의 일부이며 색인된 데이터를 저장하거나 검색 요청을 처리하는 역할을 담당하는 하나의 단위 프로세스입니다. 역할에 따라 Master-eligible(Master), Data, Coordinating, Ingest 노드로 구분할 수 있습니다.</p>
+<blockquote>
+<p>config/elasticsearch.yml 파일에서 노드의 역할을 설정할 수 있습니다.</p>
+</blockquote>
+<h3 id="master-eligible-node">Master-eligible Node</h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#master-node" target="_blank">공식페이지</a><br>
+클러스터의 노드들을 추적, 관리하며 데이터 입력 시 샤드 할당을 결정합니다. 인덱스 생성 및 삭제를 담당하며 데이터 인덱싱, 검색 등 CPU, 메모리, I/O 리소스 소모가 클 수 있습니다. 따라서 서버 부하를 예방하기 위해 역할에 맞게 구분지어 노드를 할당하는 것이 좋습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">node.master: true
+node.data: false
+node.ingest: false
+</code></pre></div><h3 id="data-node">Data Node</h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#data-node" target="_blank">공식페이지</a><br>
+색인된 데이터들을 저장하고 있는 노드이며 CRUD, 검색, 집계와 같은 데이터 처리를 담당합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">node.master: false
+node.data: true
+node.ingest: false
+</code></pre></div><h3 id="coordinating-only-node">Coordinating Only Node</h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#coordinating-only-node" target="_blank">공식페이지</a><br>
+클라이언트로부터 요청을 받아 <code>Data Node</code>로 전달하고 이 결과를 병합하여 클라이언트에게 응답합니다.
+2.0 버전까지는 <code>Client Node</code>가 이 역할을 대신하고 5.0 버전부터는 <code>Coordinating Only Node</code>가 이를 대체하게 되었다.
+큰 규모의 클러스터에서는 <code>Data Node</code>에게 데이터 관리와 인덱싱 처리에만 집중하도록 할 수 있게 리소스 사용을 부담을 나눌 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">node.master: false
+node.data: false
+node.ingest: false
+</code></pre></div><h3 id="ingest-node">Ingest Node</h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-ingest-node" target="_blank">공식페이지</a><br>
+버전 5.0.0 이상에서 사용 가능한 노드이며 다양한 형태의 데이터를 색인할 때 전처리를 담당합니다. 서버 환경과 사용 목적에 따라 선택적으로 활용할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">node.master: false
+node.data: false
+node.ingest: true
+</code></pre></div><h2 id="인덱스index-indices">인덱스(Index, Indices)</h2>
+<p>인덱스는 관계형 데이터베이스에서 <strong>Database</strong>에 상응하는 개념입니다. 클러스터 내부에서 관리되며 데이터가 저장되는 공간입니다.</p>
+<blockquote>
+<p>인덱스의 이름은 <strong>소문자</strong>로 구성해야합니다.
+타입(Type)은 버전7.0 부터 제거되었으며 각 인덱스에 하나의 타입을 갖게되고 의미가 없어졌습니다.</p>
+</blockquote>
+<h2 id="샤드shard">샤드(Shard)</h2>
+<p>샤드란 일종의 파티션과 같은 의미이며 데이터를 저장할 때 나누어진 하나의 조각 단위입니다. 샤드는 <strong>Primary Shard</strong>와<strong>Replica Shard</strong>로 구성할 수 있고 각 노드에 분산되어 저장됩니다. 이 샤드들은 데이터 유실을 막기 위해 서로 다른 노드에 저장됩니다.</p>
+<blockquote>
+<p>노드가 1개만 존재하는 경우에는 Primary Shard만 존재하고 Replica Shard는 생성되지 않습니다.</p>
+</blockquote>
+<p>노드가 네트워크 장애 또는 다른 이상으로 인해 클러스터에서 빠지게 되어 일정 시간 이내에 복구되지 않을 경우에는 유실된 샤드를 다른 노드에 복제합니다. 만약 Primary 샤드가 있는 노드에 이상이 발생하여 샤드가 유실될 경우 Replica 샤드 중 하나가 Primary 샤드로 승격되고 또 다른 복제본을 생성합니다.</p>
+<h2 id="세그먼트segment">세그먼트(Segment)</h2>
+<p>문서(Document)들은 검색의 성능을 보장하기 위해 특별한 자료구조를 갖고 있습니다. 데이터를 색인(Indexing)하는 과정에서 분석기(Analyzer)와 사전(Dictionary)을 통해 토큰으로 분리하고 읽기에 최적화된 역색인 형태의 세그먼트라는 단위로 저장됩니다.</p>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/elasticsearch">#elasticsearch</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/elasticsearch">#elasticsearch</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/shard">#shard</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/node">#node</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/golang/1/" rel="prev">
+          <span>Go 언어의 장점</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/books/silence/" rel="next">
+          <span>Silence</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  COPYRIGHT (C) <a href="https://blog.lulab.net">DONGGEUN,BANG</a>. ALL RIGHTS RESERVED.
+</footer>
+
+</body>
+</html>
