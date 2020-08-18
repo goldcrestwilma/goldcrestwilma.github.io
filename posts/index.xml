@@ -8,10 +8,20 @@
     <language>ko-KR</language>
     <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
     <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
-    <lastBuildDate>Tue, 14 Jul 2020 22:32:15 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2020 00:21:16 +0900</lastBuildDate>
     
 	<atom:link href="https://goldcrestwilma.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Decay Funtion | Elasticsearch</title>
+      <link>https://goldcrestwilma.github.io/posts/elasticsearch/decay/</link>
+      <pubDate>Wed, 19 Aug 2020 00:21:16 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/posts/elasticsearch/decay/</guid>
+      <description>Decay Functions document 의 점수를 조정하기 위해 지정한 중심점을 기준으로 점수를 감쇠하는 함수입니다. 예를 들어 다음과 같은 필드를 포함하는 문서에 적용 할 수 있습니다.
+ 위치 정보(geo) : 판교역 근처 호텔을 열거하고 싶을 때 날짜(date) : 최근 일주일 또는 한 달 등 이전 날짜의 문서를 구분짓고 싶을 때 조회수(numeric) : 게시글의 조회수를 특정 수치 중심으로 점수를 낮게 부여할 때  Supported Decay Functions 감쇠 함수 (선형 linear, 지수 exp, 가우스 함수 gauss)를 사용할 수 있습니다.</description>
+    </item>
     
     <item>
       <title>String, StringBuffer, StringBuilder 차이점</title>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decay Funtion | Elasticsearch  | Learning Never End</title>
+  <meta name="description" content="cosmos 'Decay Funtion | Elasticsearch'read this article.">
+  <meta property="og:title" content="Decay Funtion | Elasticsearch">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-08-19">
+  
+  <meta property="og:description" content="cosmos 'Decay Funtion | Elasticsearch'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/elasticsearch/decay/">
+  <meta property="og:site_name" content="Learning Never End">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="elasticsearch">
+  
+  <meta property="og:tags" content="score">
+  
+  <meta property="og:tags" content="decay">
+  
+  <meta property="og:tags" content="function">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/elasticsearch/decay/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#cosmos</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/elasticsearch/decay/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>19 Aug 2020, 00:21</time>
+        <h1>Decay Funtion | Elasticsearch</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#supported-decay-functions">Supported Decay Functions</a></li>
+        <li><a href="#dsl-query">DSL Query</a></li>
+        <li><a href="#parameters">Parameters</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <h1 id="decay-functions">Decay Functions</h1>
+<p><code>document</code> 의 점수를 조정하기 위해 지정한 중심점을 기준으로 점수를 감쇠하는 함수입니다. 예를 들어 다음과 같은 필드를 포함하는 문서에 적용 할 수 있습니다.</p>
+<ul>
+<li>위치 정보(geo) : 판교역 근처 호텔을 열거하고 싶을 때</li>
+<li>날짜(date) : 최근 일주일 또는 한 달 등 이전 날짜의 문서를 구분짓고 싶을 때</li>
+<li>조회수(numeric) : 게시글의 조회수를 특정 수치 중심으로 점수를 낮게 부여할 때</li>
+</ul>
+<h3 id="supported-decay-functions">Supported Decay Functions</h3>
+<p>감쇠 함수 (선형 <code>linear</code>, 지수 <code>exp</code>, 가우스 함수 <code>gauss</code>)를 사용할 수 있습니다.
+함수 유형 3개 중 데이터 특성에 맞게 적절하게 사용하면 좋을거 같습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/61505386/90533111-00f9fc00-e1b3-11ea-8a32-9612c3f2f303.png" alt="decay function"></p>
+<p>[공식 페이지] <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#_supported_decay_functions" target="_blank">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#_supported_decay_functions</a></p>
+<h3 id="dsl-query">DSL Query</h3>
+<p>ex) 등록한지 오래된 영상일수록 점수 감소시키기
+<code>video</code> 인덱스에서 <code>origin</code> 7월 24일을 기준으로 등록된지 <code>offset</code> 3일 이내의 영상들의 점수는 같고, <code>scale</code> 5일마다 <code>decay</code> 0.8씩 감쇠합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">GET /video/_search?
+{ 
+	&#34;query&#34;: { 
+		&#34;function_score&#34;: { 
+			&#34;query&#34;: { 
+				&#34;match_all&#34;: {...} 
+			}, 
+			&#34;functions&#34;: { 
+				&#34;exp&#34;: { 
+					&#34;time&#34;: { 
+						&#34;origin&#34;: &#34;2020-07-24&#34; //default : now
+						&#34;scale&#34;: &#34;3d&#34;,
+						&#34;offset&#34;: &#34;1d&#34;,
+						&#34;decay&#34;: 0.8
+					}
+				}
+			}
+		}
+	}
+}
+</code></pre></div><h3 id="parameters">Parameters</h3>
+<p><code>decay function</code> 에는 4개 설정 옵션이 있습니다. (<code>offset</code>, <code>decay</code> 선택)</p>
+<p><strong>origin(reference)</strong> : 곡선의 중앙지점이며 거리 계산에 사용되는 원점입니다. (<em>only numeric field, date fields, geo fields.</em>)</p>
+<p><strong>offset</strong> : <code>origin</code> 과 점수가 동일한 거리를 지정합니다. 숫자 뒤 단위는 <code>m</code>, <code>km</code>,<code>w</code>, <code>h</code> 등 필드 타입에 따라 사용가능합니다. (<em>default</em>: 0)</p>
+<p><strong>scale &amp; decay</strong> : <code>scale</code> 은 감쇠속도를 나타내며 지정한 거리마다  <code>decay</code> 만큼 점수가 감쇠합니다.  (decay <em>default</em> : 0.5)</p>
+<p>[출처] <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-decay" target="_blank">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-decay</a></p>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/elasticsearch">#elasticsearch</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/elasticsearch">#elasticsearch</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/score">#score</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/decay">#decay</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/function">#function</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/java/string/" rel="prev">
+          <span>String, StringBuffer, StringBuilder 차이점</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  COPYRIGHT (C) <a href="https://blog.lulab.net">DONGGEUN,BANG</a>. ALL RIGHTS RESERVED.
+</footer>
+
+</body>
+</html>
