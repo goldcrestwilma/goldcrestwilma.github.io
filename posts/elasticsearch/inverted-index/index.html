@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inverted Index | Elasticsearch  | Learning Never End</title>
+  <meta name="description" content="cosmos 'Inverted Index | Elasticsearch'read this article.">
+  <meta property="og:title" content="Inverted Index | Elasticsearch">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-10-21">
+  
+  <meta property="og:description" content="cosmos 'Inverted Index | Elasticsearch'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/">
+  <meta property="og:site_name" content="Learning Never End">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="elasticsearch">
+  
+  <meta property="og:tags" content="index">
+  
+  <meta property="og:tags" content="inverted">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#cosmos</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>21 Oct 2020, 01:01</time>
+        <h1>Inverted Index | Elasticsearch</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#인덱싱indexing">인덱싱(Indexing)</a></li>
+    <li><a href="#역색인inverted-index이란">역색인(Inverted Index)이란?</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <h1 id="검색엔진에서의-역색인inverted-index">검색엔진에서의 역색인(Inverted Index)</h1>
+<h2 id="인덱싱indexing">인덱싱(Indexing)</h2>
+<p>데이터가 검색될 수 있는 구조로 변경하기 위해 원본 문서를 검색어 토큰들으로 변환하여 저장하는 일련의 과정입니다. (with 형태소분석기)</p>
+<h2 id="역색인inverted-index이란">역색인(Inverted Index)이란?</h2>
+<p><code>Document</code>들이 형태소분석기를 통해 의미 있는 <code>Term</code>으로 분리되고, <code>Term</code>이 key가 되고 <code>Document</code> 원본의 위치의 값이 value가 되는 key-value 형식의 구조</p>
+<h5 id="형태소분석기를-통해-아래와-같이-분리될-수-있습니다-옵션-설정에-따라-다름">형태소분석기를 통해 아래와 같이 분리될 수 있습니다. (옵션 설정에 따라 다름)</h5>
+<pre><code>Document : 산과 바다는 친구다
+Terms : '산', '바다', '친구'
+</code></pre><p>검색엔진에서 인덱싱과정을 거치게 되면 원본 문서들의 데이터들을 참조하여 역색인 구조의 테이블로 <code>Term</code>을 나열합니다.</p>
+<p><strong>[Original Documents]</strong></p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Inverted Index</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Forward Index</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Forward-backward</td>
+</tr>
+</tbody>
+</table>
+<p><strong>[Inverted Index]</strong></p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backward</td>
+<td>3</td>
+</tr>
+<tr>
+<td>forward</td>
+<td>2, 3</td>
+</tr>
+<tr>
+<td>index</td>
+<td>1, 2</td>
+</tr>
+<tr>
+<td>inverted</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><em>이렇게 생성된 역색인 테이블를 이용해 검색엔진은 조회 요청(Search Request)을 받게되면 검색 키워드와 <code>Term</code>을 매칭시켜 빠르게 <code>Document</code>를 찾을 수 있습니다.</em></p>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/elasticsearch">#elasticsearch</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/elasticsearch">#elasticsearch</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/index">#index</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/inverted">#inverted</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/elasticsearch/decay/" rel="prev">
+          <span>Decay Funtion | Elasticsearch</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  COPYRIGHT (C) <a href="https://blog.lulab.net">DONGGEUN,BANG</a>. ALL RIGHTS RESERVED.
+</footer>
+
+</body>
+</html>

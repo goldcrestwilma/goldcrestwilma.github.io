@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/categories/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/elasticsearch/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/categories/elasticsearch/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/index/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/inverted/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/</loc>
+    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
   </url>
   
   <url>
@@ -18,37 +58,12 @@
   </url>
   
   <url>
-    <loc>https://goldcrestwilma.github.io/tags/elasticsearch/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/categories/elasticsearch/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://goldcrestwilma.github.io/tags/function/</loc>
     <lastmod>2020-08-19T00:21:16+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://goldcrestwilma.github.io/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://goldcrestwilma.github.io/tags/score/</loc>
-    <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/</loc>
     <lastmod>2020-08-19T00:21:16+09:00</lastmod>
   </url>
   

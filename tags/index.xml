@@ -8,10 +8,37 @@
     <language>ko-KR</language>
     <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
     <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
-    <lastBuildDate>Wed, 19 Aug 2020 00:21:16 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2020 01:01:26 +0900</lastBuildDate>
     
 	<atom:link href="https://goldcrestwilma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>elasticsearch</title>
+      <link>https://goldcrestwilma.github.io/tags/elasticsearch/</link>
+      <pubDate>Wed, 21 Oct 2020 01:01:26 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>index</title>
+      <link>https://goldcrestwilma.github.io/tags/index/</link>
+      <pubDate>Wed, 21 Oct 2020 01:01:26 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/tags/index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>inverted</title>
+      <link>https://goldcrestwilma.github.io/tags/inverted/</link>
+      <pubDate>Wed, 21 Oct 2020 01:01:26 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/tags/inverted/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>decay</title>
@@ -19,15 +46,6 @@
       <pubDate>Wed, 19 Aug 2020 00:21:16 +0900</pubDate>
       <author>aga6023496@gmail.com (goldcrestwilma)</author>
       <guid>https://goldcrestwilma.github.io/tags/decay/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>elasticsearch</title>
-      <link>https://goldcrestwilma.github.io/tags/elasticsearch/</link>
-      <pubDate>Wed, 19 Aug 2020 00:21:16 +0900</pubDate>
-      <author>aga6023496@gmail.com (goldcrestwilma)</author>
-      <guid>https://goldcrestwilma.github.io/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
