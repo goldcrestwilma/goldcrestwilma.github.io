@@ -23,6 +23,10 @@
   
   <meta property="og:tags" content="inverted">
   
+  <meta property="og:tags" content="역색인">
+  
+  <meta property="og:tags" content="검색">
+  
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -79,11 +83,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#인덱싱indexing">인덱싱(Indexing)</a></li>
-    <li><a href="#역색인inverted-index이란">역색인(Inverted Index)이란?</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
+    <li><a href="#역색인inverted-index이란">역색인(Inverted Index)이란?</a></li>
   </ul>
 </nav>
   </div>
@@ -92,11 +92,13 @@
 <h2 id="인덱싱indexing">인덱싱(Indexing)</h2>
 <p>데이터가 검색될 수 있는 구조로 변경하기 위해 원본 문서를 검색어 토큰들으로 변환하여 저장하는 일련의 과정입니다. (with 형태소분석기)</p>
 <h2 id="역색인inverted-index이란">역색인(Inverted Index)이란?</h2>
-<p><code>Document</code>들이 형태소분석기를 통해 의미 있는 <code>Term</code>으로 분리되고, <code>Term</code>이 key가 되고 <code>Document</code> 원본의 위치의 값이 value가 되는 key-value 형식의 구조</p>
-<h5 id="형태소분석기를-통해-아래와-같이-분리될-수-있습니다-옵션-설정에-따라-다름">형태소분석기를 통해 아래와 같이 분리될 수 있습니다. (옵션 설정에 따라 다름)</h5>
+<p><code>Document</code>들이 형태소분석기를 통해 의미 있는 <code>term</code>으로 분리되고, <code>term</code>이 key가 되고 <code>Document</code> 원본의 위치의 값이 value가 되는 key-value 형식의 구조</p>
+<ul>
+<li>형태소분석기를 통해 아래와 같이 분리될 수 있습니다. (옵션 설정에 따라 다름)</li>
+</ul>
 <pre><code>Document : 산과 바다는 친구다
 Terms : '산', '바다', '친구'
-</code></pre><p>검색엔진에서 인덱싱과정을 거치게 되면 원본 문서들의 데이터들을 참조하여 역색인 구조의 테이블로 <code>Term</code>을 나열합니다.</p>
+</code></pre><p>검색엔진에서 인덱싱과정을 거치게 되면 원본 문서들의 데이터들을 참조하여 역색인 구조의 테이블로 <code>term</code>을 나열합니다.</p>
 <p><strong>[Original Documents]</strong></p>
 <table>
 <thead>
@@ -147,7 +149,7 @@ Terms : '산', '바다', '친구'
 </tr>
 </tbody>
 </table>
-<p><em>이렇게 생성된 역색인 테이블를 이용해 검색엔진은 조회 요청(Search Request)을 받게되면 검색 키워드와 <code>Term</code>을 매칭시켜 빠르게 <code>Document</code>를 찾을 수 있습니다.</em></p>
+<p>이렇게 생성된 역색인 테이블를 이용해 검색엔진은 조회 요청(Search Request)을 받게되면 검색 키워드와 <code>term</code>을 매칭시켜 빠르게 <code>document</code>를 찾을 수 있습니다.</p>
 
   </section>
   <div class="post-meta-code">
@@ -170,6 +172,10 @@ Terms : '산', '바다', '친구'
         <a href="https://goldcrestwilma.github.io/tags/index">#index</a>
         
         <a href="https://goldcrestwilma.github.io/tags/inverted">#inverted</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/%EC%97%AD%EC%83%89%EC%9D%B8">#역색인</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/%EA%B2%80%EC%83%89">#검색</a>
         
         
       </div>
