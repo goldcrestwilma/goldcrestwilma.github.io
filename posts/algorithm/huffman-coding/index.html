@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huffman Coding  | Learning Never End</title>
+  <meta name="description" content="cosmos 'Huffman Coding'read this article.">
+  <meta property="og:title" content="Huffman Coding">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-10-27">
+  
+  <meta property="og:description" content="cosmos 'Huffman Coding'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/">
+  <meta property="og:site_name" content="Learning Never End">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="huffman">
+  
+  <meta property="og:tags" content="compression">
+  
+  <meta property="og:tags" content="algorithm">
+  
+  <meta property="og:tags" content="http2">
+  
+  <meta property="og:tags" content="http2 header">
+  
+  <meta property="og:tags" content="tree">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#cosmos</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>27 Oct 2020, 02:43</time>
+        <h1>Huffman Coding</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#허프만-코딩-압축과정">허프만 코딩 압축과정</a></li>
+    <li><a href="#허프만-트리">허프만 트리</a></li>
+    <li><a href="#허프만-코드">허프만 코드</a></li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <h1 id="허프만-부호화huffman-coding">허프만 부호화(Huffman coding)</h1>
+<p>대부분의 압축 프로그램에서 사용하는 방법으로, 자주 사용되는 문자는 적은 비트로 된 코드로 변환해서 표현하고, 별로 사용되지 않는 문자는 많은 비트로 된 코드로 변환하여 표현함으로써 전체 데이터를 표현하는 데 필요한 비트의 양을 줄이는 방법이다.</p>
+<p>1952년 당시 박사과정 학생이던 <a href="https://www.google.com/search?newwindow=1&amp;sxsrf=ALeKk02zAKl7_qcrwGbl_4TmsGQfalfkVg%3A1603724464609&amp;ei=sOSWX__rJI6B-Qbc4oYI&amp;q=David&#43;Huffman&amp;oq=David&#43;Huffman&amp;gs_lcp=CgZwc3ktYWIQAzICCAAyBQgAEMsBMgUIABDLATIFCAAQywEyBQgAEMsBMgUIABDLATIFCAAQywEyBQgAEMsBMgUIABDLATIFCAAQywFQ91NY91NghFhoAHAAeACAAWyIAWySAQMwLjGYAQCgAQKgAQGqAQdnd3Mtd2l6wAEB&amp;sclient=psy-ab&amp;ved=0ahUKEwj_g5-Yw9LsAhWOQN4KHVyxAQEQ4dUDCA0&amp;uact=5" title="데이비드 허프먼" target="_blank">데이비드 허프먼</a>이 <a href="http://compression.ru/download/articles/huff/huffman_1952_minimum-redundancy-codes.pdf" target="_blank">《A Method for the Construction of Minimum-Redundancy Codes》</a>란 제목의 논문으로 처음 발표했다.</p>
+<blockquote>
+<p>HTTP/2 에서 Header 정보를 압축하기 위해 Header Table과 <code>허프만 부호화</code>를 사용하고 있다.</p>
+</blockquote>
+<p>허프만 부호화에서는 압축 대상이 되는 데이터마다 최대한 효율적으로 압축될 수 있게끔 코드를 생성하고 그 체계에 따라 압축합니다. 데이터마다 각 문자에 대해 특정 코드가 정해지도록 허프만 트리를 이용합니다.</p>
+<h2 id="허프만-코딩-압축과정">허프만 코딩 압축과정</h2>
+<p>다음 텍스트를 허프만 부호화를 이용해 압축합니다.</p>
+<blockquote>
+<p>AAAAAAABBCCCDEEEEFFFFFFG</p>
+</blockquote>
+<ol>
+<li>데이터에서 사용되는 각 문자에 대한 출현 빈도수를 구한다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>문자</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>출현빈도</td>
+<td>7</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>빈도수를 기준으로 내림차순으로 정렬한다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>7</th>
+<th>6</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>F</td>
+<td>E</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+<td>G</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>출현 빈도가 가장 적은 2개의 문자인 D와G를 가지로 연결하고, 가지 위에 두 문자의 빈도수 합인 2를 적는다. 빈도수의 합인 2를 기준으로 재배열한다.</li>
+</ol>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vSEO7r24-X_KR6b3lwVxvnoQ693Et8Qc7ZCSoAmGgHz7Y_G9SUCtrpiFqHTUnZ2dQnWzgHB_T0wbmfH/pub?w=756&amp;h=567" alt="허프만_1"></p>
+<ol start="4">
+<li>마찬가지로 값이 가장 작은 두 개의 노드를 가지로 연결하고, 두 값의 합인 4를 적는다. 새롭게 생성된 노드를 재배열한다.</li>
+</ol>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vT9maRTyzQHk_YIHO7bweNxHmJzE2VZrq2sZKvWNHz4sKPgHZ75_D-s286Bp_qzoOXZ6-28LjNx7jUP/pub?w=756&amp;h=567" alt="허프만_2"></p>
+<ol start="5">
+<li>노드 값이 가장 작은 두 개의 노드를 연결하고, 재배열한다.</li>
+</ol>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vQau-tK6dbcGaaD5m6xLLaetQPl0nD44NZ0Rd3qt7Wkvb5p3-lJ2J_pHauDHCJyw3XD2hAK-MKOTGm4/pub?w=756&amp;h=567" alt="허프만_3"></p>
+<ol start="6">
+<li>노드 값이 가장 작은 두 개의 노드를 연결하고, 재배열한다.</li>
+</ol>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vTOmd3euD0TX4K-7jfPj0gZfF2NRTeeBJ4kac4WPp2YrMZsV9r6JvB20GbUd9rwACJk8YIZaNzgFITx/pub?w=756&amp;h=567" alt="허프만_4"></p>
+<ol start="7">
+<li>마찬가지 작업을 한다.</li>
+</ol>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vRlUOYKlu58SGV83VcVTaKfdHI2WDvNxl31jr6yqu1yPa5X123WAfYAc0kfmgCdXDm4wH2EwwLbbYSK/pub?w=756&amp;h=567" alt="허프만_5"></p>
+<ol start="8">
+<li>마찬가지 작업을 한다.</li>
+</ol>
+<h2 id="허프만-트리">허프만 트리</h2>
+<p><img src="https://docs.google.com/drawings/d/e/2PACX-1vQSP_QJ8YObPZ73ASW60V0u9BDa85-Ihd28zii1zySFth0EwKN8z8smiZKcr-qHw6RfVugkfICBMLOT/pub?w=783&amp;h=719" alt="허프만_6"></p>
+<blockquote>
+<p>더이상 연결할 수 없으므로 동작을 종료하는데, 이렇게 완성된 트리가 <strong>허프만 트리</strong>다.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p><img src="https://user-images.githubusercontent.com/61505386/97207362-46632700-17fd-11eb-9421-67ccdf4eea95.png" alt="그림1"></p>
+<p>각 문자에 대한 출현 빈도와 코드 및 코드 길이를 정리하면 다음 표와 같다. 출현 빈도수가 높은 문자에 대한 코드의 길이는 짧아지는 것을 알 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">문자</th>
+<th align="center">출현 빈도</th>
+<th align="center">허프만 코드</th>
+<th align="center">코드의 길이(비트 수)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">A</td>
+<td align="center">7</td>
+<td align="center">00</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">F</td>
+<td align="center">6</td>
+<td align="center">10</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">E</td>
+<td align="center">4</td>
+<td align="center">11</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">3</td>
+<td align="center">011</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">2</td>
+<td align="center">0100</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">1</td>
+<td align="center">01010</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">G</td>
+<td align="center">1</td>
+<td align="center">01011</td>
+<td align="center">5</td>
+</tr>
+</tbody>
+</table>
+<ol start="10">
+<li>텍스트를 허프만 코드로 나타내보자.</li>
+</ol>
+<h2 id="허프만-코드">허프만 코드</h2>
+<blockquote>
+<p>AAAAAAABBCCCDEEEEFFFFFFG<br>
+0000000000000001000100011011011010101111111110101010101001011</p>
+<p>AAAAAAA : 00 00 00 00 00 00 00  <br>
+BB : 0100 0100 <br>
+CCC : 011 011 011<br>
+D : 01010
+EEEE : 11 11 11 11<br>
+FFFFFF : 10 10 10 10 10 10
+G : 01011</p>
+</blockquote>
+<p>원 텍스트의 길이가 192비트였는데, 허프만코드로 표현하면 61비트로 줄어드는 것을 알 수 있다.</p>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/algorithm">#algorithm</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/huffman">#huffman</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/compression">#compression</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/algorithm">#algorithm</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/http2">#http2</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/http2-header">#http2 header</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/tree">#tree</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/" rel="prev">
+          <span>Inverted Index | Elasticsearch</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  COPYRIGHT (C) <a href="https://blog.lulab.net">DONGGEUN,BANG</a>. ALL RIGHTS RESERVED.
+</footer>
+
+</body>
+</html>

@@ -3,8 +3,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://goldcrestwilma.github.io/tags/algorithm/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/categories/algorithm/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://goldcrestwilma.github.io/categories/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/compression/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/http2/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/http2-header/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/huffman/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/tree/</loc>
+    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
   </url>
   
   <url>
@@ -29,21 +84,6 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/posts/elasticsearch/inverted-index/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/</loc>
     <lastmod>2020-10-21T01:01:26+09:00</lastmod>
   </url>
   

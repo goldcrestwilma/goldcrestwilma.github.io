@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on Learning Never End</title>
+    <link>https://goldcrestwilma.github.io/categories/algorithm/</link>
+    <description>Recent content in algorithm on Learning Never End</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
+    <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
+    <lastBuildDate>Tue, 27 Oct 2020 02:43:19 +0900</lastBuildDate>
+    
+	<atom:link href="https://goldcrestwilma.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Huffman Coding</title>
+      <link>https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/</link>
+      <pubDate>Tue, 27 Oct 2020 02:43:19 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/</guid>
+      <description>허프만 부호화(Huffman coding) 대부분의 압축 프로그램에서 사용하는 방법으로, 자주 사용되는 문자는 적은 비트로 된 코드로 변환해서 표현하고, 별로 사용되지 않는 문자는 많은 비트로 된 코드로 변환하여 표현함으로써 전체 데이터를 표현하는 데 필요한 비트의 양을 줄이는 방법이다.</description>
+    </item>
+    
+  </channel>
+</rss>
