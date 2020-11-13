@@ -3,17 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://goldcrestwilma.github.io/categories/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/go/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/categories/golang/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/golang/net-http/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/pkg/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/</loc>
+    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://goldcrestwilma.github.io/tags/algorithm/</loc>
     <lastmod>2020-10-27T02:43:19+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://goldcrestwilma.github.io/categories/algorithm/</loc>
-    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/categories/</loc>
     <lastmod>2020-10-27T02:43:19+09:00</lastmod>
   </url>
   
@@ -39,21 +74,6 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/</loc>
-    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/</loc>
-    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/</loc>
-    <lastmod>2020-10-27T02:43:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/</loc>
     <lastmod>2020-10-27T02:43:19+09:00</lastmod>
   </url>
   
@@ -178,12 +198,7 @@
   </url>
   
   <url>
-    <loc>https://goldcrestwilma.github.io/tags/go/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/golang/1/</loc>
+    <loc>https://goldcrestwilma.github.io/posts/golang/intro/</loc>
     <lastmod>2020-03-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -193,8 +208,7 @@
   </url>
   
   <url>
-    <loc>https://goldcrestwilma.github.io/categories/golang/</loc>
-    <lastmod>2020-03-13T00:00:00+00:00</lastmod>
+    <loc>https://goldcrestwilma.github.io/tags/net/http/</loc>
   </url>
   
 </urlset>

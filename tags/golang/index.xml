@@ -14,12 +14,12 @@
     
     
     <item>
-      <title>Go 언어의 장점</title>
-      <link>https://goldcrestwilma.github.io/posts/golang/1/</link>
+      <title>Golang</title>
+      <link>https://goldcrestwilma.github.io/posts/golang/intro/</link>
       <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
       <author>aga6023496@gmail.com (goldcrestwilma)</author>
-      <guid>https://goldcrestwilma.github.io/posts/golang/1/</guid>
-      <description>소개 공식 홈페이지Go 또는 Golang은 오픈 소스 프로그래밍 언어입니다. 정적으로 유형이 지정되고 컴파일 된 기계 코드 바이너리를 생성합니다. 새로운 프로그래밍 언어에는 메모리를 안전하게 사용하고, 객체를 관리하고, 가비지를 수집하고, 동시성과 함께 정적 (또는 엄격한) 타이핑을 제공 할 수있는 도구가 포함되어 있습니다.</description>
+      <guid>https://goldcrestwilma.github.io/posts/golang/intro/</guid>
+      <description>소개 Go 또는 Golang은 오픈 소스 프로그래밍 언어입니다. 정적으로 유형이 지정되고 컴파일 된 기계 코드 바이너리를 생성합니다. 새로운 프로그래밍 언어에는 메모리를 안전하게 사용하고, 객체를 관리하고, 가비지를 수집하고, 동시성과 함께 정적 (또는 엄격한) 타이핑을 제공 할 수있는 도구가 포함되어 있습니다.</description>
     </item>
     
   </channel>

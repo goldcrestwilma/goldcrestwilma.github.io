@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>net/http 패키지 | golang  | Learning Never Ends</title>
+  <meta name="description" content="cosmos 'net/http 패키지 | golang'read this article.">
+  <meta property="og:title" content="net/http 패키지 | golang">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-11-14">
+  
+  <meta property="og:description" content="cosmos 'net/http 패키지 | golang'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/golang/net-http/">
+  <meta property="og:site_name" content="Learning Never Ends">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="go">
+  
+  <meta property="og:tags" content="pkg">
+  
+  <meta property="og:tags" content="net/http">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/golang/net-http/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#cosmos</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/golang/net-http/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>14 Nov 2020, 01:41</time>
+        <h1>net/http 패키지 | golang</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#예제">예제</a></li>
+    <li><a href="#라우팅">라우팅</a></li>
+    <li><a href="#핸들러-종류">핸들러 종류</a>
+      <ul>
+        <li><a href="#fileserver">FileServer</a></li>
+        <li><a href="#notfoundhandler">NotFoundHandler</a></li>
+        <li><a href="#redirecthandler">RedirectHandler</a></li>
+        <li><a href="#stripprefix">StripPrefix</a></li>
+        <li><a href="#timeouthandler">TimeoutHandler</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+  <section class="post-content">
+    <h1 id="go-nethttp-패키지">Go net/http 패키지</h1>
+<p>net/http 패키지는 HTTP 클라이언트와 서버를 작성하는 데 필요한 모든 기능을 제공한다.</p>
+<p>HTTP 프로토콜을 사용해 통신하는 다른 서버에 요청을 보내거나, 요청을 별도의 Go 함수에서 처리하고 정적 파일을 제공하는 등의 HTTP 서버를 실행할 수 있는 기능을 제공한다.</p>
+<h2 id="예제">예제</h2>
+<p>아래 간단한 예제 코드를 살펴봅시다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> main
+
+<span style="color:#a6e22e">import</span> <span style="color:#f92672">(</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;log&#34;</span>
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+<span style="color:#f92672">)</span>
+
+func <span style="color:#a6e22e">main</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+	port <span style="color:#f92672">:=</span> 8080
+
+	http<span style="color:#f92672">.</span><span style="color:#a6e22e">HandleFunc</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/helloWorld&#34;</span><span style="color:#f92672">,</span> helloWorldHandler<span style="color:#f92672">)</span>
+
+	log<span style="color:#f92672">.</span><span style="color:#a6e22e">Printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Server starting on port %v\n&#34;</span><span style="color:#f92672">,</span> port<span style="color:#f92672">)</span>
+	log<span style="color:#f92672">.</span><span style="color:#a6e22e">Fatal</span><span style="color:#f92672">(</span>http<span style="color:#f92672">.</span><span style="color:#a6e22e">ListenAndServe</span><span style="color:#f92672">(</span>fmt<span style="color:#f92672">.</span><span style="color:#a6e22e">Sprintf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;:%v&#34;</span><span style="color:#f92672">,</span> port<span style="color:#f92672">),</span> nil<span style="color:#f92672">))</span>
+<span style="color:#f92672">}</span>
+
+func <span style="color:#a6e22e">helloWorldHandler</span><span style="color:#f92672">(</span>rw http<span style="color:#f92672">.</span><span style="color:#a6e22e">ResponseWriter</span><span style="color:#f92672">,</span> r <span style="color:#f92672">*</span>http<span style="color:#f92672">.</span><span style="color:#a6e22e">Request</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	fmt<span style="color:#f92672">.</span><span style="color:#a6e22e">Fprint</span><span style="color:#f92672">(</span>rw<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Hello World\n&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>소스 코드 작성 후 명령어로 실행하면, 터미널에서는 로그 정보와 브라우저에서는 http://localhost:8080/helloWolrd URI 를 입력하면 <code>Hello World</code> 출력되는 것을 확인할 수 있다.</p>
+<blockquote>
+<p>$ go run 파일명</p>
+</blockquote>
+<blockquote>
+<p>$ 2020/11/14 00:13:27 Server starting on port 8080</p>
+</blockquote>
+<p><code>HandleFunc</code> 메소드는 첫 번째 매개 변수로 전달된 경로(/helloWorld)를 두 번째 매개 변수로 전달된 함수(helloWorldHandler)에 매핑해 <code>DefaultServeMux</code> 핸들러에 Handler 타입을 만든다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">HandleFunc</span><span style="color:#f92672">(</span>pattern string<span style="color:#f92672">,</span> handler <span style="color:#a6e22e">func</span><span style="color:#f92672">(</span>ResponseWriter<span style="color:#f92672">,</span> <span style="color:#f92672">*</span>Request<span style="color:#f92672">))</span>
+</code></pre></div><p><code>ListenAndServe</code> 함수는 서버를 바인드할 TCP 네트워크 주소와 요청을 라우팅하는 데 사용할 핸들러라는 두 가지 매개 변수를 사용한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">ListenAndServe</span><span style="color:#f92672">(</span>addr string<span style="color:#f92672">,</span> handler Handler<span style="color:#f92672">)</span> error
+</code></pre></div><p><code>ListenAndServe</code> 함수가 서버를 시작하지 못하면 에러를 리턴한다. 이 결과를 <code>log.Fatal(error)</code>로 전달한다. 이 함수는 <code>fmt.Print(a ... interface {})</code> 호출하고 <code>os.Exit(1)</code>을 호출하는 것과 동일한 메소드다.</p>
+<h2 id="라우팅">라우팅</h2>
+<p>Go HTTP 서버에는 지정된 라우터가 따로 없고 대신 <code>http.Handler</code> 인터페이스를 구현한 객체가 <code>Listen()</code> 함수의 최상위 함수로 전달된다. 요청이 서버로 들어오면 이 핸들러의 <code>ServeHTTP</code> 메소드가 호출되고 이 메소드가 어떤 작업을 수행하거나 다른 메소드로 처리를 위임한다. 다중 경로 처리를 위해 HTTP 패키지에는 <code>http.Handler</code> 인터페이스를 구현하는 <code>ServeMux</code> 라는 특수한 객체가 있다.</p>
+<p><code>ServeMux</code> 핸들러에 핸들러를 추가할 수 있는 함수가 두 가지 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">HandleFunc</span><span style="color:#f92672">(</span>pattern string<span style="color:#f92672">,</span> handler <span style="color:#a6e22e">func</span><span style="color:#f92672">(</span>ResponseWriter<span style="color:#f92672">,</span> <span style="color:#f92672">*</span>Request<span style="color:#f92672">))</span>
+func <span style="color:#a6e22e">Handle</span><span style="color:#f92672">(</span>pattern string<span style="color:#f92672">,</span> handler Handler<span style="color:#f92672">)</span>
+</code></pre></div><p><code>HandleFunc</code> 함수는 <code>func(ResponseWriter, *Request)</code> 함수 시그니처를 가지고 있는 일반 함수를 매개 변수로 전달해, 핸들러의 <code>ServeHTTP 메소드</code>가 이 함수를 호출하게 돼있는 핸들러를 생성하는 편리한 함수다.</p>
+<p>Handle 함수는 핸들러를 등록할 패턴과 Handler 인터페이스를 구현하는 객체라는 두 개의 매개 변수를 전달해줘야 한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">type Handler <span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">{</span>
+	ServeHTTP<span style="color:#f92672">(</span>ResponseWriter<span style="color:#f92672">,</span> <span style="color:#f92672">*</span>Request<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>ServeMux</code> 핸들러는 와일드 카드나 정규 표현식을 지원하지 않는 아주 간단한 라우팅 모델을 가지고 있기 때문에, <code>ServeMux</code> 를 사용하면 등록된 경로를 명시해야 한다.</p>
+<h2 id="핸들러-종류">핸들러 종류</h2>
+<p>net/http 패키지는 몇 가지 종류의 편리한 핸들러를 생성하는 메소드들을 구현한다.</p>
+<h3 id="fileserver">FileServer</h3>
+<p>HTTP 요청에 대해 파일 시스템의 내용을 제공하는 핸들러를 리턴한다. 파일 시스템에 저장된 이미지나 정적 파일을 제공하는 데 사용할 수 있다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">FileServer</span><span style="color:#f92672">(</span>root FileSystem<span style="color:#f92672">)</span> Handler
+</code></pre></div><h3 id="notfoundhandler">NotFoundHandler</h3>
+<p>&lsquo;404 페이지를 찾을 수 없음&rsquo; 응답으로 각 요청에 응답하는 간단한 요청 핸들러를 리턴한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">NotFoundHandler</span><span style="color:#f92672">()</span> Handler
+</code></pre></div><h3 id="redirecthandler">RedirectHandler</h3>
+<p>주어진 상태 코드를 사용해 수신한 각 요청을 지정된 URI로 리다이렉션하는 요청 핸들러를 리턴한다. 매개 변수로 받는 코드는 3xx 범위에 있어야 하며 일반적으로 <code>StatusMovedPermanently(301)</code>, <code>StatusFound(302)</code> 또는 <code>StatusSeeOther(303)</code> 이다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">RedirectHandler</span><span style="color:#f92672">(</span>url string<span style="color:#f92672">,</span> code <span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> Handler
+</code></pre></div><h3 id="stripprefix">StripPrefix</h3>
+<p>요청 URL의 경로에서 매개 변수로 받은 접두사를 제거한 다음 h 매개 변수의 핸들러를 호출해 HTTP 요청을 처리하는 핸들러를 리턴한다. 경로가 존재하지 않으면 StripPrefix는 HTTP &lsquo;404&rsquo; 에러로 응답한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">StripPrefix</span><span style="color:#f92672">(</span>prefix string<span style="color:#f92672">,</span> h Handler<span style="color:#f92672">)</span> Handler
+</code></pre></div><h3 id="timeouthandler">TimeoutHandler</h3>
+<p>주어진 제한 시간 내에 매개 변수로 받은 h 핸들러를 실행하는 Handler 인터페이스를 리턴한다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">func <span style="color:#a6e22e">TimeoutHandler</span><span style="color:#f92672">(</span>h Handler<span style="color:#f92672">,</span> dt time<span style="color:#f92672">.</span><span style="color:#a6e22e">Duration</span><span style="color:#f92672">,</span> msg string<span style="color:#f92672">)</span> Handler
+</code></pre></div><p>새 핸들러는 각 요청을 처리하기 위해 h.ServeHTTP를 호출하지만 시간 제한보다 긴 시간 동안 호출이 실행되면 처리기는 본문에 지정된 메시지(msg)를 포함해 &lsquo;503 서비스를 사용할 수 없음&rsquo; 으로 응답한다.</p>
+<p>핸들러들의 정확한 사용법과 설명은 <a href="https://golang.org/pkg/net/http/" target="_blank">Go 공식 패키지 문서</a>에서 자세하게 확인할 수 있다.</p>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/golang">#golang</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/go">#go</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/pkg">#pkg</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/net/http">#net/http</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/algorithm/huffman-coding/" rel="prev">
+          <span>Huffman Coding</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> | Theme <a href="https://themes.gohugo.io/hugo-hello-programmer-theme/" target="_blank">Hello Programmer</a> 
+</footer>
+
+</body>
+</html>
