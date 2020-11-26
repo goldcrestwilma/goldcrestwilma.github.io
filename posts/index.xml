@@ -43,7 +43,7 @@ HTTP 프로토콜을 사용해 통신하는 다른 서버에 요청을 보내거
     </item>
     
     <item>
-      <title>Decay Funtion | Elasticsearch</title>
+      <title>Decay Funtion | elasticsearch</title>
       <link>https://goldcrestwilma.github.io/posts/elasticsearch/decay/</link>
       <pubDate>Wed, 19 Aug 2020 00:21:16 +0900</pubDate>
       <author>aga6023496@gmail.com (goldcrestwilma)</author>
@@ -53,7 +53,7 @@ HTTP 프로토콜을 사용해 통신하는 다른 서버에 요청을 보내거
     </item>
     
     <item>
-      <title>String, StringBuffer, StringBuilder 차이점</title>
+      <title>String, StringBuffer, StringBuilder 차이점 | java</title>
       <link>https://goldcrestwilma.github.io/posts/java/string/</link>
       <pubDate>Tue, 14 Jul 2020 22:32:15 +0900</pubDate>
       <author>aga6023496@gmail.com (goldcrestwilma)</author>
