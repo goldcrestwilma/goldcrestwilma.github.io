@@ -90,6 +90,7 @@
     <li><a href="#인덱스index-indices">인덱스(Index, Indices)</a></li>
     <li><a href="#샤드shard">샤드(Shard)</a></li>
     <li><a href="#세그먼트segment">세그먼트(Segment)</a></li>
+    <li><a href="#물리적-구조elasticsearch-architecture">물리적 구조(Elasticsearch Architecture)</a></li>
   </ul>
 </nav>
   </div>
@@ -104,7 +105,7 @@
 <li>대용량의 데이터를 짧은 시간내에 입력(색인)하고 아주 빠른 속도로 색인된 데이터의 검색, 집계가 가능합니다.</li>
 </ol>
 <h1 id="the-basic-concepts-of-elasticsearch">The Basic Concepts of Elasticsearch</h1>
-<p><code>Elasticsearch</code>의 기본 개념인 클러스터, 인덱스, 노드, 샤드, 세그먼트 등을 살펴 보겠습니다.</p>
+<p><code>Elasticsearch</code>의 기본 개념인 <code>클러스터</code>, <code>인덱스</code>, <code>노드</code>, <code>샤드</code>, <code>세그먼트</code> 등을 살펴 보겠습니다.</p>
 <h2 id="클러스터cluster">클러스터(Cluster)</h2>
 <p>클러스터는 전체 데이터를 저장하고 모든 서버에 걸쳐 통합 인덱싱 및 검색 기능을 제공하는 하나 이상의 서버 모음입니다. 관계형 데이터베이스의 경우 노드는 DB 인스턴스다. 클러스터 이름이 같은 N개의 노드가 있을 수 있습니다.</p>
 <h2 id="노드node">노드(Node)</h2>
@@ -147,11 +148,14 @@ node.ingest: true
 <h2 id="샤드shard">샤드(Shard)</h2>
 <p>샤드란 일종의 파티션과 같은 의미이며 데이터를 저장할 때 나누어진 하나의 조각 단위입니다. 샤드는 <strong>Primary Shard</strong>와<strong>Replica Shard</strong>로 구성할 수 있고 각 노드에 분산되어 저장됩니다. 이 샤드들은 데이터 유실을 막기 위해 서로 다른 노드에 저장됩니다.</p>
 <blockquote>
-<p>노드가 1개만 존재하는 경우에는 Primary Shard만 존재하고 Replica Shard는 생성되지 않습니다.</p>
+<p>노드가 1개만 존재하는 경우에는 <code>Primary Shard</code>만 존재하고 <code>Replica Shard</code>는 생성되지 않습니다.</p>
 </blockquote>
 <p>노드가 네트워크 장애 또는 다른 이상으로 인해 클러스터에서 빠지게 되어 일정 시간 이내에 복구되지 않을 경우에는 유실된 샤드를 다른 노드에 복제합니다. 만약 Primary 샤드가 있는 노드에 이상이 발생하여 샤드가 유실될 경우 Replica 샤드 중 하나가 Primary 샤드로 승격되고 또 다른 복제본을 생성합니다.</p>
 <h2 id="세그먼트segment">세그먼트(Segment)</h2>
-<p>문서(Document)들은 검색의 성능을 보장하기 위해 특별한 자료구조를 갖고 있습니다. 데이터를 색인(Indexing)하는 과정에서 분석기(Analyzer)와 사전(Dictionary)을 통해 토큰으로 분리하고 읽기에 최적화된 역색인 형태의 세그먼트라는 단위로 저장됩니다.</p>
+<p>문서(Document)들은 검색의 성능을 보장하기 위해 특별한 자료구조를 갖고 있습니다. 데이터를 색인(Indexing)하는 과정에서 분석기(Analyzer)와 사전(Dictionary)을 통해 토큰으로 분리하고 읽기에 최적화된 역색인 형태의 세그먼트라는 단위로 저장됩니다. 세그먼트는 불변의 성질을 갖고 있습니다. 이 불변성때문에 데이터가 업데이트되면 실제로 삭제되었다는 마크만 하고 새로운 데이터를 가리키게 됩니다. 실제 삭제된 데이터는 <a href="https://www.elastic.co/guide/en/elasticsearch/guide/master/merge-process.html" target="_blank">머지 프로세스</a>를 거쳐 완전히 사라지게 됩니다.</p>
+<h2 id="물리적-구조elasticsearch-architecture">물리적 구조(Elasticsearch Architecture)</h2>
+<p><img src="https://user-images.githubusercontent.com/61505386/101245254-ce1e4880-374e-11eb-8a81-4519ecb20846.png" alt=""></p>
+<p>이미지 출처: <a href="https://github.com/exo-archives/exo-es-search" target="_blank">https://github.com/exo-archives/exo-es-search</a></p>
 
   </section>
   <div class="post-meta-code">
