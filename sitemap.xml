@@ -3,8 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://goldcrestwilma.github.io/tags/api/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/bulk/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/elasticsearch/bulk-api/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://goldcrestwilma.github.io/categories/</loc>
-    <lastmod>2021-01-28T23:32:56+09:00</lastmod>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/elasticsearch/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/categories/elasticsearch/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/index/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/indexing/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/</loc>
+    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
   </url>
   
   <url>
@@ -13,17 +63,7 @@
   </url>
   
   <url>
-    <loc>https://goldcrestwilma.github.io/</loc>
-    <lastmod>2021-01-28T23:32:56+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://goldcrestwilma.github.io/categories/macos/</loc>
-    <lastmod>2021-01-28T23:32:56+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/</loc>
     <lastmod>2021-01-28T23:32:56+09:00</lastmod>
   </url>
   
@@ -54,11 +94,6 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/tags/pkg/</loc>
-    <lastmod>2020-11-14T01:41:47+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/</loc>
     <lastmod>2020-11-14T01:41:47+09:00</lastmod>
   </url>
   
@@ -100,21 +135,6 @@
   <url>
     <loc>https://goldcrestwilma.github.io/tags/tree/</loc>
     <lastmod>2020-10-27T02:43:19+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/elasticsearch/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/categories/elasticsearch/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/index/</loc>
-    <lastmod>2020-10-21T01:01:26+09:00</lastmod>
   </url>
   
   <url>

@@ -8,10 +8,20 @@
     <language>ko-KR</language>
     <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
     <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
-    <lastBuildDate>Wed, 21 Oct 2020 01:01:26 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 04 May 2021 22:24:49 +0900</lastBuildDate>
     
 	<atom:link href="https://goldcrestwilma.github.io/categories/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bulk Api | elasticsearch</title>
+      <link>https://goldcrestwilma.github.io/posts/elasticsearch/bulk-api/</link>
+      <pubDate>Tue, 04 May 2021 22:24:49 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/posts/elasticsearch/bulk-api/</guid>
+      <description>Bulk API Bulk API 를 사용하면 단일 API 호출로 많은 index, delete 작업을 수행할 수 있고 인덱싱 속도를 아주 크게 향상시킬 수 있다.
+각 서브쿼리는 독립적으로 실행되며 하나의 서브쿼리가 실패하더라도 다른 쿼리에 영향을 미치지 않는다.</description>
+    </item>
     
     <item>
       <title>Inverted Index | elasticsearch</title>
