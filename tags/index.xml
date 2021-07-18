@@ -8,10 +8,28 @@
     <language>ko-KR</language>
     <managingEditor>aga6023496@gmail.com (goldcrestwilma)</managingEditor>
     <webMaster>aga6023496@gmail.com (goldcrestwilma)</webMaster>
-    <lastBuildDate>Tue, 04 May 2021 22:24:49 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jul 2021 22:11:57 +0900</lastBuildDate>
     
 	<atom:link href="https://goldcrestwilma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>generics</title>
+      <link>https://goldcrestwilma.github.io/tags/generics/</link>
+      <pubDate>Sun, 18 Jul 2021 22:11:57 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/tags/generics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://goldcrestwilma.github.io/tags/java/</link>
+      <pubDate>Sun, 18 Jul 2021 22:11:57 +0900</pubDate>
+      <author>aga6023496@gmail.com (goldcrestwilma)</author>
+      <guid>https://goldcrestwilma.github.io/tags/java/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>API</title>

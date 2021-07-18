@@ -3,6 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://goldcrestwilma.github.io/categories/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/generics/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/java/generics-terms/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/java/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/categories/java/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/posts/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://goldcrestwilma.github.io/tags/</loc>
+    <lastmod>2021-07-18T22:11:57+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://goldcrestwilma.github.io/tags/api/</loc>
     <lastmod>2021-05-04T22:24:49+09:00</lastmod>
   </url>
@@ -14,11 +54,6 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/posts/elasticsearch/bulk-api/</loc>
-    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/categories/</loc>
     <lastmod>2021-05-04T22:24:49+09:00</lastmod>
   </url>
   
@@ -39,21 +74,6 @@
   
   <url>
     <loc>https://goldcrestwilma.github.io/tags/indexing/</loc>
-    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/</loc>
-    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/posts/</loc>
-    <lastmod>2021-05-04T22:24:49+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/tags/</loc>
     <lastmod>2021-05-04T22:24:49+09:00</lastmod>
   </url>
   
@@ -175,11 +195,6 @@
   <url>
     <loc>https://goldcrestwilma.github.io/tags/score/</loc>
     <lastmod>2020-08-19T00:21:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://goldcrestwilma.github.io/categories/java/</loc>
-    <lastmod>2020-07-14T22:32:15+09:00</lastmod>
   </url>
   
   <url>

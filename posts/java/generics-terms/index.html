@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generics 관련 용어 | java  | Learning Never Ends</title>
+  <meta name="description" content="cosmos 'Generics 관련 용어 | java'read this article.">
+  <meta property="og:title" content="Generics 관련 용어 | java">
+  
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2021-07-18">
+  
+  <meta property="og:description" content="cosmos 'Generics 관련 용어 | java'read this article.">
+  <meta property="og:url" content="https://goldcrestwilma.github.io/posts/java/generics-terms/">
+  <meta property="og:site_name" content="Learning Never Ends">
+  
+  <meta property="og:image" content="https://goldcrestwilma.github.io/images/thumbnail.png">
+  
+  
+  <meta property="og:tags" content="java">
+  
+  <meta property="og:tags" content="generics">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://goldcrestwilma.github.io/posts/java/generics-terms/">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/agate.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-184793260-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-184793260-1');
+  </script>
+  
+  
+  <script type="text/javascript">
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.className === 'menu')
+      e.className = 'menu hidden';
+    else
+      e.className = 'menu';
+  }
+  </script>
+</head>
+<body>
+  <div class="navbar">    
+    
+    <div class="burger">
+      <button onclick="toggle_visibility('menu')">
+        <i class="fa fa-bars" aria-hidden="true"></i> Menu
+      </button>
+    </div>
+    <div id="menu" class="menu hidden">
+      <ul>
+        <li><a href="/">#home</a></li>
+        <li><a href="/categories">#categories</a></li>
+        <li><a href="/tags">#tags</a></li>
+        
+      </ul>
+      <input class="search" id="search-input" type="search" placeholder="Keyword" value="">
+    </div>
+  </div>
+  <div class="container">    
+
+<div class="post">
+  <div class="post-title">
+    <a href="https://goldcrestwilma.github.io/posts/java/generics-terms/">
+      <img src="/images/post-title-icon.png" />
+      <div class="post-meta">
+        <time>18 Jul 2021, 22:11</time>
+        <h1>Generics 관련 용어 | java</h1>
+      </div>
+    </a>
+  </div>
+  <div class="post-toc">
+    <span class="title">Table of contents</span>
+    <nav id="TableOfContents"></nav>
+  </div>
+  <section class="post-content">
+    <h1 id="제네릭-관련-용어-정리">제네릭 관련 용어 정리</h1>
+<table>
+<thead>
+<tr>
+<th>한글 용어</th>
+<th>영문 용어</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>매개변수화 타입</td>
+<td>parameterized type</td>
+<td>List&lt;String&gt;</td>
+</tr>
+<tr>
+<td>실제 타입 매개변수</td>
+<td>actual type parameter</td>
+<td>String</td>
+</tr>
+<tr>
+<td>제네릭 타입</td>
+<td>generic type</td>
+<td>List&lt;E&gt;</td>
+</tr>
+<tr>
+<td>정규 타입 매개변수</td>
+<td>formal type parameter</td>
+<td>E</td>
+</tr>
+<tr>
+<td>비한정적 와일드카드 타입</td>
+<td>unbounded wildcard type</td>
+<td>List&lt;?&gt;</td>
+</tr>
+<tr>
+<td>로 타입</td>
+<td>raw type</td>
+<td>List</td>
+</tr>
+<tr>
+<td>한정적 타입 매개변수</td>
+<td>bounded type parameter</td>
+<td>&lt;E extends Number&gt;</td>
+</tr>
+<tr>
+<td>재귀적 타입 한정</td>
+<td>recursive type bound</td>
+<td>&lt;T extends Comparable&lt;T&raquo;</td>
+</tr>
+<tr>
+<td>한정적 와일드카드 타입</td>
+<td>bounded wildcard type</td>
+<td>List&lt;? extends Number&gt;</td>
+</tr>
+<tr>
+<td>제네릭 메서드</td>
+<td>generic method</td>
+<td>static &lt;E&gt; List&lt;E&gt; asList(E[] a)</td>
+</tr>
+<tr>
+<td>타입 토큰</td>
+<td>type token</td>
+<td>String.class</td>
+</tr>
+</tbody>
+</table>
+
+  </section>
+  <div class="post-meta-code">
+    <div class="desc">
+      
+      <div class="desc">
+        <span class="fixed-desc">_Categories</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io//categories/java">#java</a>
+        
+      </div>
+      
+      <div class="desc">
+        <span class="fixed-desc">_Tags</span>
+        
+        
+        <a href="https://goldcrestwilma.github.io/tags/java">#java</a>
+        
+        <a href="https://goldcrestwilma.github.io/tags/generics">#generics</a>
+        
+        
+      </div>
+    </div>
+  </div>  
+  
+  <div class="post-comment">    
+        
+  </div>
+  
+  <div class="recommend-articles">
+    Recommend these articles
+    <ul>
+      
+      <li>
+        <a href="https://goldcrestwilma.github.io/posts/elasticsearch/bulk-api/" rel="prev">
+          <span>Bulk API | elasticsearch</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+  <script src="https://utteranc.es/client.js"
+        repo="goldcrestwilma/blog-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+
+<div class="go-top">
+  <a href="#" class="go-top-button">
+    <i class="fa fa-angle-double-up"></i>
+    <span>top</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="share">
+    <a href="https://github.com/goldcrestwilma" title="Github" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:aga6023496@gmail.com" title="Email" target="_blank"><i class="fa fa-envelope"></i></a>
+  </div>
+  Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> | Theme <a href="https://themes.gohugo.io/hugo-hello-programmer-theme/" target="_blank">Hello Programmer</a> 
+</footer>
+
+</body>
+</html>
